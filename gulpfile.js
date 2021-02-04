@@ -7,6 +7,7 @@ let fileinclude = require('gulp-file-include')
 let imagemin = require('gulp-imagemin')
 let ttf2woff2 = require('gulp-ttf2woff2')
 let ttf2woff = require('gulp-ttf2woff')
+let gcmq = require('gulp-group-css-media-queries')
 
 function browserSync() {
   browsersync.init({
@@ -27,6 +28,7 @@ function html () {
 function css () {
   return src('./src/scss/*.scss')
     .pipe(sass())
+    .pipe(gcmq())
     .pipe(autoprefixer({
       overrideBrowserlist:["last 5 version"],
       cascade: true
