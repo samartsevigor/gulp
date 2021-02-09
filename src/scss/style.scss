@@ -1,6 +1,14 @@
-@import '_header.scss';
-
-
+@import "./owl.carousel.min.css";
+@import "./owl.theme.default.min.css";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+}
 
 @import '_footer.scss';
 @import '_media.scss';
+

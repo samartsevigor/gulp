@@ -45,8 +45,14 @@ function css() {
 }
 
 function images() {
-  return src('./src/images/*.{jpg, png, svg, gif, webp, ico}')
+  return src('./src/images/*.{gif,jpg,png,svg}')
     .pipe(dest('./dist/images/'))
+    .pipe(browsersync.stream())
+}
+
+function video() {
+  return src('./src/video/*')
+    .pipe(dest('./dist/video/'))
     .pipe(browsersync.stream())
 }
 
@@ -67,11 +73,12 @@ function watchFiles() {
   gulp.watch(['./src/js/*'], js)
 }
 
-let build = gulp.series(gulp.parallel(html, css, images, fonts, js))
+let build = gulp.series(gulp.parallel(html, css, images, fonts, js, video))
 let watch = gulp.parallel(build, watchFiles, browserSync)
 
 exports.js = js
 exports.images = images
+exports.video = video
 exports.html = html
 exports.watchFiles = watchFiles
 exports.css = css
